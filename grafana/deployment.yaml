@@ -1,0 +1,25 @@
+kind: Deployment
+metadata:
+  labels:
+    app: grafana
+  name: grafana
+  namespace: kube-system
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: grafana
+  template:
+    metadata:
+      labels:
+        app: grafana
+    spec:
+      containers:
+      - image: appscode/grafana:4.3.0
+        name: grafana
+        volumeMounts:
+        - name: grafana-persistent-storage
+          mountPath: /var
+      volumes:
+      - emptyDir: {}
+        name: grafana-persistent-storage
