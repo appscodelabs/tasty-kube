@@ -1,0 +1,56 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    app: searchlight
+  name: searchlight-operator
+  namespace: searchlight-42e4fy
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: searchlight
+    spec:
+      containers:
+      - image: aerokite/icinga:e2e-test-k8s
+        imagePullPolicy: Always
+        name: icinga
+        ports:
+        - containerPort: 5665
+          name: api
+          protocol: TCP
+        - containerPort: 60006
+          name: web
+          protocol: TCP
+        volumeMounts:
+        - mountPath: /var/pv
+          name: data-volume
+        - mountPath: /var/db-script
+          name: script-volume
+        - mountPath: /srv
+          name: icingaconfig
+      - args:
+        - basic
+        - ./setup-db.sh
+        image: appscode/postgres:9.5-v3-db
+        imagePullPolicy: IfNotPresent
+        name: ido
+        ports:
+        - containerPort: 5432
+          name: ido
+          protocol: TCP
+        volumeMounts:
+        - mountPath: /var/pv
+          name: data-volume
+        - mountPath: /var/db-script
+          name: script-volume
+      volumes:
+      - emptyDir: {}
+        name: data-volume
+      - emptyDir: {}
+        name: script-volume
+      - gitRepo:
+          directory: .
+          repository: https://github.com/appscode/icinga-testconfig.git
+        name: icingaconfig
