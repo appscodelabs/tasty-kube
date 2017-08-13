@@ -1,0 +1,20 @@
+apiVersion: extensions/v1beta1
+kind: DaemonSet
+metadata:
+  name: busy-dm
+  namespace: default
+  labels:
+    app: busy-dm
+spec:
+  template:
+    metadata:
+      labels:
+        name: busy-dm
+    spec:
+      containers:
+      - image: busybox
+        command:
+        - sleep
+        - "3600"
+        imagePullPolicy: IfNotPresent
+        name: busybox
