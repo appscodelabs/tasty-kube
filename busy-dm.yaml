@@ -11,6 +11,8 @@ spec:
       labels:
         name: busy-dm
     spec:
+      nodeSelector:
+        kubernetes.io/hostname: 'ip-172-20-53-35.ec2.internal'
       containers:
       - image: busybox
         command:
