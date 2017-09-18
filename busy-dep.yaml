@@ -1,0 +1,21 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: busy-dep
+  labels:
+    app: busy-dep
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: busy-dep
+    spec:
+      containers:
+      - image: busybox
+        command:
+          - sleep
+          - "3600"
+        imagePullPolicy: IfNotPresent
+        name: busybox
+      restartPolicy: Always
