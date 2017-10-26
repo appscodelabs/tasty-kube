@@ -1,7 +1,7 @@
 apiVersion: v1
 data:
-  you: only
-  leave: once
+  you.imp: only
+  leave.ok: once
 kind: ConfigMap
 metadata:
   name: omni
@@ -9,13 +9,19 @@ metadata:
 apiVersion: v1
 kind: Pod
 metadata:
-  name: cfg-env
+  name: busybox
+  labels:
+    app: busybox
 spec:
   containers:
-    - name: busybox
-      image: busybox
-      command: [ "/bin/sh", "-c", "env" ]
-      envFrom:
-      - configMapRef:
-          name: omni
-  restartPolicy: Never
+  - image: busybox
+    command:
+      - sleep
+      - "3600"
+    imagePullPolicy: IfNotPresent
+    name: busybox
+    envFrom:
+    - configMapRef:
+        name: omni
+  restartPolicy: Always
+
