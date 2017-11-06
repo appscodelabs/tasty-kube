@@ -6,4 +6,4 @@ kubectl patch deployment test-server -p '{"spec":{"template":{"metadata":{"annot
 ```
 
 ### FAQ
-- failed to create sandbox means that the kubelet can't bring up the pause container or CNI started causing IP to change.
+- `failed to create sandbox` means that the kubelet can't bring up the pause container or CNI started causing IP to change.
