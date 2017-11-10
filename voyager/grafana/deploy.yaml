@@ -1,0 +1,63 @@
+kind: Deployment
+apiVersion: extensions/v1beta1
+metadata:
+  name: grafana-grafana
+  labels:
+    app: grafana-grafana
+    chart: grafana-0.0.3
+    heritage: Tiller
+    release: grafana
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: grafana-grafana
+      release: grafana
+  template:
+    metadata:
+      labels:
+        app: grafana-grafana
+        release: grafana
+    spec:
+      volumes:
+      - emptyDir: {}
+        name: grafana-storage
+      containers:
+      - name: grafana
+        image: grafana/grafana:4.4.1
+        ports:
+        - name: web
+          containerPort: 3000
+          protocol: TCP
+        env:
+        - name: GF_AUTH_BASIC_ENABLED
+          value: 'true'
+        - name: GF_AUTH_ANONYMOUS_ENABLED
+          value: 'true'
+        - name: GF_SECURITY_ADMIN_USER
+          valueFrom:
+            secretKeyRef:
+              name: grafana-grafana
+              key: user
+        - name: GF_SECURITY_ADMIN_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: grafana-grafana
+              key: password
+        volumeMounts:
+        - name: grafana-storage
+          mountPath: "/var/grafana-storage"
+        imagePullPolicy: IfNotPresent
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: grafana
+  namespace: kube-system
+spec:
+  type: NodePort
+  ports:
+    - port: 80
+      targetPort: 3000
+  selector:
+    app: grafana-grafana
