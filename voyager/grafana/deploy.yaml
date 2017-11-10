@@ -70,7 +70,7 @@ kind: Ingress
 metadata:
   annotations:
     ingress.appscode.com/type: NodePort
-  name: hello-basic-auth
+  name: grafana-basic-auth
   namespace: default
 spec:
   rules:
