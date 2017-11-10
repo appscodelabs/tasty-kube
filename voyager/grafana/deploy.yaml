@@ -53,6 +53,10 @@ apiVersion: v1
 kind: Service
 metadata:
   name: grafana
+  annotations:
+    ingress.kubernetes.io/auth-type: basic
+    ingress.kubernetes.io/auth-realm: Server
+    ingress.kubernetes.io/auth-secret: ing-pass
 spec:
   type: NodePort
   ports:
@@ -60,3 +64,19 @@ spec:
       targetPort: 3000
   selector:
     app: grafana-grafana
+---
+apiVersion: voyager.appscode.com/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    ingress.appscode.com/type: NodePort
+  name: hello-basic-auth
+  namespace: default
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /
+        backend:
+          serviceName: grafana
+          servicePort: 80
