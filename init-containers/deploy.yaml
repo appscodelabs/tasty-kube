@@ -1,0 +1,24 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: init-demo
+  labels:
+    app: init-demo
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: init-demo
+    spec:
+      containers:
+      - name: myapp-container
+        image: busybox
+        command: ['sh', '-c', 'echo The app is running! && sleep 3600']
+      initContainers:
+      - name: init-myservice
+        image: busybox
+        command: ['sh', '-c', 'until nslookup myservice; do echo waiting for myservice; sleep 2; done;']
+      - name: init-mydb
+        image: busybox
+        command: ['sh', '-c', 'until nslookup mydb; do echo waiting for mydb; sleep 2; done;']
