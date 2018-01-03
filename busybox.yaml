@@ -6,7 +6,7 @@ metadata:
     app: busybox
 spec:
   containers:
-  - image: busybox
+  - image: radial/busyboxplus:curl
     command:
       - sleep
       - "3600"
