@@ -10,7 +10,7 @@ This will download a pre-configured manifest of `kube-apiserver.yaml` and `audit
 ```console
 minikube ssh
 # inside minikube vm
-cp /tmp/files/kube-apiserver.yaml /etc/kubernetes/manifests/kube-apiserver.yaml
+sudo cp /tmp/files/kube-apiserver.yaml /etc/kubernetes/manifests/kube-apiserver.yaml
 ```
 
 This will restart the kube apiserver.
