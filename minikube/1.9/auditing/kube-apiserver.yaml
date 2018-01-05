@@ -1,0 +1,78 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    scheduler.alpha.kubernetes.io/critical-pod: ""
+  creationTimestamp: null
+  labels:
+    component: kube-apiserver
+    tier: control-plane
+  name: kube-apiserver
+  namespace: kube-system
+spec:
+  containers:
+  - command:
+    - kube-apiserver
+    - --admission-control=NamespaceLifecycle,LimitRanger,ServiceAccount,PersistentVolumeLabel,DefaultStorageClass,ValidatingAdmissionWebhook,ResourceQuota,DefaultTolerationSeconds,MutatingAdmissionWebhook
+    - --audit-policy-file=/tmp/files/audit-policy.yaml
+    - --audit-log-path=/tmp/files/audit.log
+    - --feature-gates=AdvancedAuditing=true
+    - --kubelet-preferred-address-types=InternalIP,ExternalIP,Hostname
+    - --requestheader-allowed-names=front-proxy-client
+    - --secure-port=8443
+    - --proxy-client-key-file=/var/lib/localkube/certs/front-proxy-client.key
+    - --kubelet-client-key=/var/lib/localkube/certs/apiserver-kubelet-client.key
+    - --requestheader-client-ca-file=/var/lib/localkube/certs/front-proxy-ca.crt
+    - --allow-privileged=true
+    - --requestheader-username-headers=X-Remote-User
+    - --requestheader-group-headers=X-Remote-Group
+    - --service-cluster-ip-range=10.96.0.0/12
+    - --tls-private-key-file=/var/lib/localkube/certs/apiserver.key
+    - --kubelet-client-certificate=/var/lib/localkube/certs/apiserver-kubelet-client.crt
+    - --proxy-client-cert-file=/var/lib/localkube/certs/front-proxy-client.crt
+    - --insecure-port=0
+    - --enable-bootstrap-token-auth=true
+    - --requestheader-extra-headers-prefix=X-Remote-Extra-
+    - --client-ca-file=/var/lib/localkube/certs/ca.crt
+    - --tls-cert-file=/var/lib/localkube/certs/apiserver.crt
+    - --advertise-address=192.168.99.106
+    - --service-account-key-file=/var/lib/localkube/certs/sa.pub
+    - --authorization-mode=Node,RBAC
+    - --etcd-servers=http://127.0.0.1:2379
+    image: gcr.io/google_containers/kube-apiserver-amd64:v1.9.0
+    livenessProbe:
+      failureThreshold: 8
+      httpGet:
+        host: 192.168.99.106
+        path: /healthz
+        port: 8443
+        scheme: HTTPS
+      initialDelaySeconds: 15
+      timeoutSeconds: 15
+    name: kube-apiserver
+    resources:
+      requests:
+        cpu: 250m
+    volumeMounts:
+    - mountPath: /tmp/files/
+      name: data
+    - mountPath: /var/lib/localkube/certs/
+      name: k8s-certs
+      readOnly: true
+    - mountPath: /etc/ssl/certs
+      name: ca-certs
+      readOnly: true
+  hostNetwork: true
+  volumes:
+  - hostPath:
+      path: /tmp/files
+    name: data
+  - hostPath:
+      path: /var/lib/localkube/certs/
+      type: DirectoryOrCreate
+    name: k8s-certs
+  - hostPath:
+      path: /etc/ssl/certs
+      type: DirectoryOrCreate
+    name: ca-certs
+status: {}
