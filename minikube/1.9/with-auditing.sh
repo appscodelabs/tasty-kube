@@ -10,7 +10,7 @@ rules:
 - level: Metadata
 EOF
 
-minikube delete
+minikube delete || true
 minikube start \
 --kubernetes-version=v1.9.0 \
 --bootstrapper=kubeadm --extra-config=apiserver.admission-control="NamespaceLifecycle,LimitRanger,ServiceAccount,PersistentVolumeLabel,DefaultStorageClass,ValidatingAdmissionWebhook,ResourceQuota,DefaultTolerationSeconds,MutatingAdmissionWebhook" \
