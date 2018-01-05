@@ -1,7 +1,7 @@
 #!/bin/bash
 set -xeou pipefail
 
-minikube delete
+minikube delete || true
 # https://github.com/kubernetes/kubeadm/issues/629
 minikube start \
   --kubernetes-version=v1.9.0 \
