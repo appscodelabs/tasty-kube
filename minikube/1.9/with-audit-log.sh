@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -xeou pipefail
+
 cat <<EOF > ~/.minikube/files/audit-policy.yaml
 # Log all requests at the Metadata level.
 apiVersion: audit.k8s.io/v1beta1
