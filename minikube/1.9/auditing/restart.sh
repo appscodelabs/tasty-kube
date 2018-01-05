@@ -9,7 +9,7 @@ curl -fsSL https://raw.githubusercontent.com/tamalsaha/tasty-kube/master/minikub
 minikube delete || true
 minikube start \
 --kubernetes-version=v1.9.0 \
---bootstrapper=kubeadm --extra-config=apiserver.admission-control="NamespaceLifecycle,LimitRanger,ServiceAccount,PersistentVolumeLabel,DefaultStorageClass,ValidatingAdmissionWebhook,ResourceQuota,DefaultTolerationSeconds,MutatingAdmissionWebhook" \
+--bootstrapper=kubeadm --extra-config=apiserver.admission-control="NamespaceLifecycle,LimitRanger,ServiceAccount,DefaultStorageClass,ValidatingAdmissionWebhook,ResourceQuota,DefaultTolerationSeconds,MutatingAdmissionWebhook" \
 --mount --mount-string="$HOME/.minikube/files:/tmp/files" \
 --feature-gates=AdvancedAuditing=true \
 --extra-config=apiserver.audit-log-path=/tmp/files/audit.log
