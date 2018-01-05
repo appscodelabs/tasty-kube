@@ -8,7 +8,7 @@ https://raw.githubusercontent.com/tamalsaha/tasty-kube/master/minikube/1.9/audit
 
 ```console
 minikube ssh
-cp /tmp/files/kube-apiserver.yaml /etc/kubernetes/manifests/kube-apiserver.yaml
+sudo cp /tmp/files/kube-apiserver.yaml /etc/kubernetes/manifests/kube-apiserver.yaml
 ```
 
 This will restart the kube apiserver.
