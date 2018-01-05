@@ -1,7 +1,7 @@
 - Restart minikube
 
 ```console
-https://raw.githubusercontent.com/tamalsaha/tasty-kube/master/minikube/1.9/auditing/restart.sh
+curl -fsSL https://raw.githubusercontent.com/tamalsaha/tasty-kube/master/minikube/1.9/auditing/restart.sh | bash
 ```
 This will download a pre-configured manifest of `kube-apiserver.yaml` and `audit-policy.yaml` file into the `~/.minikube/files` folder. Then `minikube` will mount this folder inside the Minikube VM as /tmp/files folder.
 
