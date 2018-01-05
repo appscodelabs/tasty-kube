@@ -2,13 +2,9 @@
 
 set -xeou pipefail
 
-cat <<EOF > ~/.minikube/files/audit-policy.yaml
-# Log all requests at the Metadata level.
-apiVersion: audit.k8s.io/v1beta1
-kind: Policy
-rules:
-- level: Metadata
-EOF
+mkdir -p ~/.minikube/files
+curl -fsSL https://raw.githubusercontent.com/tamalsaha/tasty-kube/master/minikube/1.9/auditing/kube-apiserver.yaml > ~/.minikube/files/kube-apiserver.yaml
+curl -fsSL https://raw.githubusercontent.com/tamalsaha/tasty-kube/master/minikube/1.9/auditing/audit-policy.yaml > ~/.minikube/files/audit-policy.yaml
 
 minikube delete || true
 minikube start \
