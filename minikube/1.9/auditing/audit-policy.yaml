@@ -9,7 +9,7 @@ omitStages:
   - RequestReceived
 rules:
 - level: Metadata
-  # users: ["system:kube-proxy"]
+  # users: ["system:serviceaccount:<namespace>:<serviceaccount-name>"]
   resources:
   - group: "" # core
   - group: "admissionregistration.k8s.io"
