@@ -1,4 +1,5 @@
 #!/bin/bash
+set -xeou pipefail
 
 minikube delete
 # https://github.com/kubernetes/kubeadm/issues/629
