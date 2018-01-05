@@ -14,4 +14,4 @@ minikube start \
 --bootstrapper=kubeadm --extra-config=apiserver.admission-control="NamespaceLifecycle,LimitRanger,ServiceAccount,PersistentVolumeLabel,DefaultStorageClass,ValidatingAdmissionWebhook,ResourceQuota,DefaultTolerationSeconds,MutatingAdmissionWebhook" \
 --extra-config=apiserver.audit-policy-file=/audit-policy.yaml \
 --extra-config=apiserver.audit-log-path=/tmp/audit.log
---feature-gates=AdvancedAudit=true 
+--feature-gates=AdvancedAuditing=true 
