@@ -6,6 +6,6 @@ minikube delete || true
 minikube start \
 --kubernetes-version=v1.9.0 \
 --bootstrapper=kubeadm --extra-config=apiserver.admission-control="NamespaceLifecycle,LimitRanger,ServiceAccount,PersistentVolumeLabel,DefaultStorageClass,ValidatingAdmissionWebhook,ResourceQuota,DefaultTolerationSeconds,MutatingAdmissionWebhook" \
---mount-string="$HOME/.minikube/files:/tmp/data" \
+--mount --mount-string="$HOME/.minikube/files:/tmp/data" \
 --feature-gates=AdvancedAuditing=true \
 --extra-config=apiserver.audit-log-path=/tmp/data/audit.log
