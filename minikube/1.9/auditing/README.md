@@ -1,3 +1,7 @@
+# Kubernetes 1.9 cluster with Advanced Auditing
+
+Here are the steps to get Kubernetes 1.9 cluster with [Advanced Auditing](https://kubernetes.io/docs/tasks/debug-application-cluster/audit/):
+
 - Restart minikube
 
 ```console
