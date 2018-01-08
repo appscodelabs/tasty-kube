@@ -108,10 +108,6 @@ kubectl apply \
   -f https://raw.githubusercontent.com/pharmer/addons/master/calico/2.6/calico.yaml \
   --kubeconfig /etc/kubernetes/admin.conf
 
-kubectl apply \
-  -f https://raw.githubusercontent.com/pharmer/addons/master/kubeadm-probe/installer.yaml \
-  --kubeconfig /etc/kubernetes/admin.conf
-
 mkdir -p ~/.kube
 sudo cp -i /etc/kubernetes/admin.conf ~/.kube/config
 sudo chown $(id -u):$(id -g) ~/.kube/config
