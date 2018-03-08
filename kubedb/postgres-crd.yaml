@@ -1,0 +1,20 @@
+  
+apiVersion: apiextensions.k8s.io/v1beta1
+kind: CustomResourceDefinition
+metadata:
+  name: postgreses.kubedb.com
+  labels:
+    app: kubedb
+apiVersion: apiextensions.k8s.io/v1beta1
+kind: CustomResourceDefinition
+spec:
+  group: kubedb.com
+  names:
+    kind: Postgres
+    listKind: PostgresList
+    plural: postgreses
+    shortNames:
+    - pg
+    singular: postgres
+  scope: Namespaced
+  version: v1alpha1
