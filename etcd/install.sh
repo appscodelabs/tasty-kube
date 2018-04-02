@@ -1,4 +1,5 @@
 #!/bin/bash
+set -xe
 
 ETCD_VER=v3.2.18
 
