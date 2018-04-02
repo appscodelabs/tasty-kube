@@ -1,0 +1,153 @@
+I0401 23:20:43.097933   22069 controller.go:367] no etcd cluster members - restoring from backup
+I0401 23:20:43.098095   22069 vfs.go:95] listed backups in /tmp/etcd-manager/backups/test/backups: [2018-04-02T06:20:40Z-000000]
+I0401 23:20:43.098151   22069 vfs.go:119] Loading info for backup "2018-04-02T06:20:40Z-000000"
+I0401 23:20:43.098364   22069 vfs.go:133] read backup info for "2018-04-02T06:20:40Z-000000": timestamp:1522650040 cluster_spec:<member_count:1 etcd_version:"3.2.18" > 
+I0401 23:20:43.098401   22069 controller.go:404] read cluster spec from backup: member_count:1 etcd_version:"3.2.18" 
+I0401 23:20:43.098422   22069 controller.go:237] spec member_count:1 etcd_version:"3.2.18" 
+I0401 23:20:43.098451   22069 controller.go:782] starting new etcd cluster with [etcdClusterPeerInfo{peer=peer{id:"DMkpvEkSD8FGcHYvCQUSWQ" addresses:"127.0.0.1:8000" }, info=cluster_name:"test" node_configuration:<name:"DMkpvEkSD8FGcHYvCQUSWQ" peer_urls:"http://127.0.0.1:2380" client_urls:"http://127.0.0.1:4001" quarantined_client_urls:"http://127.0.0.1:8001" > }]
+I0401 23:20:43.099137   22069 etcdserver.go:454] starting etcd with datadir /tmp/etcd-manager/data/test/1/data/KPO3m-ad2IhO3FH5NJ-Vvg
+I0401 23:20:43.099212   22069 etcdprocess.go:116] executing command /opt/etcd-v3.2.18-linux-amd64/etcd [/opt/etcd-v3.2.18-linux-amd64/etcd]
+2018-04-01 23:20:43.110667 I | pkg/flags: recognized and used environment variable ETCD_ADVERTISE_CLIENT_URLS=http://127.0.0.1:8001
+2018-04-01 23:20:43.110762 I | pkg/flags: recognized and used environment variable ETCD_DATA_DIR=/tmp/etcd-manager/data/test/1/data/KPO3m-ad2IhO3FH5NJ-Vvg
+2018-04-01 23:20:43.110788 I | pkg/flags: recognized and used environment variable ETCD_ENABLE_V2=false
+2018-04-01 23:20:43.110815 I | pkg/flags: recognized and used environment variable ETCD_INITIAL_ADVERTISE_PEER_URLS=http://127.0.0.1:2380
+2018-04-01 23:20:43.110831 I | pkg/flags: recognized and used environment variable ETCD_INITIAL_CLUSTER=DMkpvEkSD8FGcHYvCQUSWQ=http://127.0.0.1:2380
+2018-04-01 23:20:43.110847 I | pkg/flags: recognized and used environment variable ETCD_INITIAL_CLUSTER_STATE=new
+2018-04-01 23:20:43.110861 I | pkg/flags: recognized and used environment variable ETCD_INITIAL_CLUSTER_TOKEN=KPO3m-ad2IhO3FH5NJ-Vvg
+2018-04-01 23:20:43.110881 I | pkg/flags: recognized and used environment variable ETCD_LISTEN_CLIENT_URLS=http://127.0.0.1:8001
+2018-04-01 23:20:43.110910 I | pkg/flags: recognized and used environment variable ETCD_LISTEN_PEER_URLS=http://127.0.0.1:2380
+2018-04-01 23:20:43.110939 I | pkg/flags: recognized and used environment variable ETCD_NAME=DMkpvEkSD8FGcHYvCQUSWQ
+2018-04-01 23:20:43.111001 I | etcdmain: etcd Version: 3.2.18
+2018-04-01 23:20:43.111013 I | etcdmain: Git SHA: eddf599c6
+2018-04-01 23:20:43.111025 I | etcdmain: Go Version: go1.8.7
+2018-04-01 23:20:43.111037 I | etcdmain: Go OS/Arch: linux/amd64
+2018-04-01 23:20:43.111050 I | etcdmain: setting maximum number of CPUs to 8, total number of available CPUs is 8
+2018-04-01 23:20:43.111135 I | embed: listening for peers on http://127.0.0.1:2380
+2018-04-01 23:20:43.111183 I | embed: listening for client requests on 127.0.0.1:8001
+2018-04-01 23:20:43.158268 I | etcdserver: name = DMkpvEkSD8FGcHYvCQUSWQ
+2018-04-01 23:20:43.158296 I | etcdserver: data dir = /tmp/etcd-manager/data/test/1/data/KPO3m-ad2IhO3FH5NJ-Vvg
+2018-04-01 23:20:43.158308 I | etcdserver: member dir = /tmp/etcd-manager/data/test/1/data/KPO3m-ad2IhO3FH5NJ-Vvg/member
+2018-04-01 23:20:43.158318 I | etcdserver: heartbeat = 100ms
+2018-04-01 23:20:43.158326 I | etcdserver: election = 1000ms
+2018-04-01 23:20:43.158335 I | etcdserver: snapshot count = 100000
+2018-04-01 23:20:43.158351 I | etcdserver: advertise client URLs = http://127.0.0.1:8001
+2018-04-01 23:20:43.158361 I | etcdserver: initial advertise peer URLs = http://127.0.0.1:2380
+2018-04-01 23:20:43.158376 I | etcdserver: initial cluster = DMkpvEkSD8FGcHYvCQUSWQ=http://127.0.0.1:2380
+2018-04-01 23:20:43.226078 I | etcdserver: starting member 73f9360396bcc534 in cluster 97ba33d6f2bbbcb0
+2018-04-01 23:20:43.226131 I | raft: 73f9360396bcc534 became follower at term 0
+2018-04-01 23:20:43.226146 I | raft: newRaft 73f9360396bcc534 [peers: [], term: 0, commit: 0, applied: 0, lastindex: 0, lastterm: 0]
+2018-04-01 23:20:43.226159 I | raft: 73f9360396bcc534 became follower at term 1
+2018-04-01 23:20:43.313461 W | auth: simple token is not cryptographically signed
+2018-04-01 23:20:43.370603 I | etcdserver: starting server... [version: 3.2.18, cluster version: to_be_decided]
+2018-04-01 23:20:43.370770 I | etcdserver: 73f9360396bcc534 as single-node; fast-forwarding 9 ticks (election ticks 10)
+2018-04-01 23:20:43.371201 I | etcdserver/membership: added member 73f9360396bcc534 [http://127.0.0.1:2380] to cluster 97ba33d6f2bbbcb0
+2018-04-01 23:20:44.226520 I | raft: 73f9360396bcc534 is starting a new election at term 1
+2018-04-01 23:20:44.226562 I | raft: 73f9360396bcc534 became candidate at term 2
+2018-04-01 23:20:44.226593 I | raft: 73f9360396bcc534 received MsgVoteResp from 73f9360396bcc534 at term 2
+2018-04-01 23:20:44.226613 I | raft: 73f9360396bcc534 became leader at term 2
+2018-04-01 23:20:44.226625 I | raft: raft.node: 73f9360396bcc534 elected leader 73f9360396bcc534 at term 2
+2018-04-01 23:20:44.226951 I | embed: ready to serve client requests
+2018-04-01 23:20:44.227007 I | etcdserver: setting up the initial cluster version to 3.2
+2018-04-01 23:20:44.227039 E | etcdmain: forgot to set Type=notify in systemd service file?
+2018-04-01 23:20:44.227080 I | etcdserver: published {Name:DMkpvEkSD8FGcHYvCQUSWQ ClientURLs:[http://127.0.0.1:8001]} to cluster 97ba33d6f2bbbcb0
+2018-04-01 23:20:44.227268 N | embed: serving insecure client requests on 127.0.0.1:8001, this is strongly discouraged!
+2018-04-01 23:20:44.246099 N | etcdserver/membership: set the initial cluster version to 3.2
+2018-04-01 23:20:44.246177 I | etcdserver/api: enabled capabilities for version 3.2
+I0401 23:20:45.100949   22069 controller.go:96] starting controller iteration
+I0401 23:20:45.100986   22069 controller.go:106] peers: [peer{id:"DMkpvEkSD8FGcHYvCQUSWQ" addresses:"127.0.0.1:8000" }]
+I0401 23:20:45.103339   22069 controller.go:190] etcd cluster state: etcdClusterState
+  members:
+    {"name":"DMkpvEkSD8FGcHYvCQUSWQ","peerURLs":["http://127.0.0.1:2380"],"endpoints":["http://127.0.0.1:8001"],"ID":"8356769972604421428"}
+  peers:
+    etcdClusterPeerInfo{peer=peer{id:"DMkpvEkSD8FGcHYvCQUSWQ" addresses:"127.0.0.1:8000" }, info=cluster_name:"test" node_configuration:<name:"DMkpvEkSD8FGcHYvCQUSWQ" peer_urls:"http://127.0.0.1:2380" client_urls:"http://127.0.0.1:4001" quarantined_client_urls:"http://127.0.0.1:8001" > etcd_state:<cluster:<cluster_token:"KPO3m-ad2IhO3FH5NJ-Vvg" nodes:<name:"DMkpvEkSD8FGcHYvCQUSWQ" peer_urls:"http://127.0.0.1:2380" client_urls:"http://127.0.0.1:4001" quarantined_client_urls:"http://127.0.0.1:8001" > > etcd_version:"3.2.18" quarantined:true > }
+I0401 23:20:45.105080   22069 controller.go:363] spec key not set, will bootstrap from backup
+I0401 23:20:45.105239   22069 vfs.go:95] listed backups in /tmp/etcd-manager/backups/test/backups: [2018-04-02T06:20:40Z-000000]
+I0401 23:20:45.105282   22069 vfs.go:119] Loading info for backup "2018-04-02T06:20:40Z-000000"
+I0401 23:20:45.105537   22069 vfs.go:133] read backup info for "2018-04-02T06:20:40Z-000000": timestamp:1522650040 cluster_spec:<member_count:1 etcd_version:"3.2.18" > 
+I0401 23:20:45.105611   22069 controller.go:396] copying cluster spec into etcd: member_count:1 etcd_version:"3.2.18" 
+I0401 23:20:45.107293   22069 controller.go:404] read cluster spec from backup: member_count:1 etcd_version:"3.2.18" 
+I0401 23:20:45.107325   22069 controller.go:237] spec member_count:1 etcd_version:"3.2.18" 
+I0401 23:20:45.107445   22069 vfs.go:95] listed backups in /tmp/etcd-manager/backups/test/backups: [2018-04-02T06:20:40Z-000000]
+I0401 23:20:45.107463   22069 vfs.go:119] Loading info for backup "2018-04-02T06:20:40Z-000000"
+I0401 23:20:45.107554   22069 vfs.go:133] read backup info for "2018-04-02T06:20:40Z-000000": timestamp:1522650040 cluster_spec:<member_count:1 etcd_version:"3.2.18" > 
+W0401 23:20:45.107584   22069 restore.go:33] etcd version not found in "2018-04-02T06:20:40Z-000000"
+I0401 23:20:45.129699   22069 restore.go:86] Setting quarantined state to %!b(bool=false)
+I0401 23:20:45.129965   22069 etcdserver.go:287] Reconfigure request: leadership_token:"Peul4ML5SWKDbQD64QsISw" cluster_name:"test" 
+I0401 23:20:45.130031   22069 etcdserver.go:331] Stopping etcd for reconfigure request: leadership_token:"Peul4ML5SWKDbQD64QsISw" cluster_name:"test" 
+I0401 23:20:45.130046   22069 etcdserver.go:510] killing etcd with datadir /tmp/etcd-manager/data/test/1/data/KPO3m-ad2IhO3FH5NJ-Vvg
+I0401 23:20:45.130081   22069 etcdprocess.go:69] Waiting for etcd to exit
+I0401 23:20:45.230340   22069 etcdprocess.go:69] Waiting for etcd to exit
+I0401 23:20:45.230373   22069 etcdprocess.go:74] Exited etcd: signal: killed
+I0401 23:20:45.230714   22069 etcdserver.go:342] Starting etcd version "3.2.18"
+I0401 23:20:45.230744   22069 etcdserver.go:454] starting etcd with datadir /tmp/etcd-manager/data/test/1/data/KPO3m-ad2IhO3FH5NJ-Vvg
+I0401 23:20:45.230783   22069 etcdprocess.go:116] executing command /opt/etcd-v3.2.18-linux-amd64/etcd [/opt/etcd-v3.2.18-linux-amd64/etcd]
+I0401 23:20:45.232402   22069 controller.go:96] starting controller iteration
+I0401 23:20:45.232433   22069 controller.go:106] peers: [peer{id:"DMkpvEkSD8FGcHYvCQUSWQ" addresses:"127.0.0.1:8000" }]
+2018-04-01 23:20:45.241017 I | pkg/flags: recognized and used environment variable ETCD_ADVERTISE_CLIENT_URLS=http://127.0.0.1:4001
+2018-04-01 23:20:45.241085 I | pkg/flags: recognized and used environment variable ETCD_DATA_DIR=/tmp/etcd-manager/data/test/1/data/KPO3m-ad2IhO3FH5NJ-Vvg
+2018-04-01 23:20:45.241098 I | pkg/flags: recognized and used environment variable ETCD_ENABLE_V2=false
+2018-04-01 23:20:45.241116 I | pkg/flags: recognized and used environment variable ETCD_INITIAL_ADVERTISE_PEER_URLS=http://127.0.0.1:2380
+2018-04-01 23:20:45.241124 I | pkg/flags: recognized and used environment variable ETCD_INITIAL_CLUSTER=DMkpvEkSD8FGcHYvCQUSWQ=http://127.0.0.1:2380
+2018-04-01 23:20:45.241131 I | pkg/flags: recognized and used environment variable ETCD_INITIAL_CLUSTER_STATE=existing
+2018-04-01 23:20:45.241138 I | pkg/flags: recognized and used environment variable ETCD_INITIAL_CLUSTER_TOKEN=KPO3m-ad2IhO3FH5NJ-Vvg
+2018-04-01 23:20:45.241147 I | pkg/flags: recognized and used environment variable ETCD_LISTEN_CLIENT_URLS=http://127.0.0.1:4001
+2018-04-01 23:20:45.241161 I | pkg/flags: recognized and used environment variable ETCD_LISTEN_PEER_URLS=http://127.0.0.1:2380
+2018-04-01 23:20:45.241178 I | pkg/flags: recognized and used environment variable ETCD_NAME=DMkpvEkSD8FGcHYvCQUSWQ
+2018-04-01 23:20:45.241222 I | etcdmain: etcd Version: 3.2.18
+2018-04-01 23:20:45.241228 I | etcdmain: Git SHA: eddf599c6
+2018-04-01 23:20:45.241234 I | etcdmain: Go Version: go1.8.7
+2018-04-01 23:20:45.241239 I | etcdmain: Go OS/Arch: linux/amd64
+2018-04-01 23:20:45.241245 I | etcdmain: setting maximum number of CPUs to 8, total number of available CPUs is 8
+2018-04-01 23:20:45.241291 N | etcdmain: the server is already initialized as member before, starting as etcd member...
+2018-04-01 23:20:45.241331 I | embed: listening for peers on http://127.0.0.1:2380
+2018-04-01 23:20:45.241359 I | embed: listening for client requests on 127.0.0.1:4001
+2018-04-01 23:20:45.245458 I | etcdserver: name = DMkpvEkSD8FGcHYvCQUSWQ
+2018-04-01 23:20:45.245481 I | etcdserver: data dir = /tmp/etcd-manager/data/test/1/data/KPO3m-ad2IhO3FH5NJ-Vvg
+2018-04-01 23:20:45.245487 I | etcdserver: member dir = /tmp/etcd-manager/data/test/1/data/KPO3m-ad2IhO3FH5NJ-Vvg/member
+2018-04-01 23:20:45.245493 I | etcdserver: heartbeat = 100ms
+2018-04-01 23:20:45.245499 I | etcdserver: election = 1000ms
+2018-04-01 23:20:45.245505 I | etcdserver: snapshot count = 100000
+2018-04-01 23:20:45.245518 I | etcdserver: advertise client URLs = http://127.0.0.1:4001
+2018-04-01 23:20:45.273497 I | etcdserver: restarting member 73f9360396bcc534 in cluster 97ba33d6f2bbbcb0 at commit index 6
+2018-04-01 23:20:45.273541 I | raft: 73f9360396bcc534 became follower at term 2
+2018-04-01 23:20:45.273559 I | raft: newRaft 73f9360396bcc534 [peers: [], term: 2, commit: 6, applied: 0, lastindex: 6, lastterm: 2]
+2018-04-01 23:20:45.313329 W | auth: simple token is not cryptographically signed
+2018-04-01 23:20:45.370425 I | etcdserver: starting server... [version: 3.2.18, cluster version: to_be_decided]
+2018-04-01 23:20:45.370811 I | etcdserver/membership: added member 73f9360396bcc534 [http://127.0.0.1:2380] to cluster 97ba33d6f2bbbcb0
+2018-04-01 23:20:45.370907 N | etcdserver/membership: set the initial cluster version to 3.2
+2018-04-01 23:20:45.370948 I | etcdserver/api: enabled capabilities for version 3.2
+2018-04-01 23:20:46.473907 I | raft: 73f9360396bcc534 is starting a new election at term 2
+2018-04-01 23:20:46.473946 I | raft: 73f9360396bcc534 became candidate at term 3
+2018-04-01 23:20:46.473970 I | raft: 73f9360396bcc534 received MsgVoteResp from 73f9360396bcc534 at term 3
+2018-04-01 23:20:46.473989 I | raft: 73f9360396bcc534 became leader at term 3
+2018-04-01 23:20:46.474002 I | raft: raft.node: 73f9360396bcc534 elected leader 73f9360396bcc534 at term 3
+2018-04-01 23:20:46.474269 I | etcdserver: published {Name:DMkpvEkSD8FGcHYvCQUSWQ ClientURLs:[http://127.0.0.1:4001]} to cluster 97ba33d6f2bbbcb0
+2018-04-01 23:20:46.474320 I | embed: ready to serve client requests
+2018-04-01 23:20:46.474365 E | etcdmain: forgot to set Type=notify in systemd service file?
+2018-04-01 23:20:46.474588 N | embed: serving insecure client requests on 127.0.0.1:4001, this is strongly discouraged!
+I0401 23:20:46.476179   22069 controller.go:190] etcd cluster state: etcdClusterState
+  members:
+    {"name":"DMkpvEkSD8FGcHYvCQUSWQ","peerURLs":["http://127.0.0.1:2380"],"endpoints":["http://127.0.0.1:4001"],"ID":"8356769972604421428"}
+  peers:
+    etcdClusterPeerInfo{peer=peer{id:"DMkpvEkSD8FGcHYvCQUSWQ" addresses:"127.0.0.1:8000" }, info=cluster_name:"test" node_configuration:<name:"DMkpvEkSD8FGcHYvCQUSWQ" peer_urls:"http://127.0.0.1:2380" client_urls:"http://127.0.0.1:4001" quarantined_client_urls:"http://127.0.0.1:8001" > etcd_state:<cluster:<cluster_token:"KPO3m-ad2IhO3FH5NJ-Vvg" nodes:<name:"DMkpvEkSD8FGcHYvCQUSWQ" peer_urls:"http://127.0.0.1:2380" client_urls:"http://127.0.0.1:4001" quarantined_client_urls:"http://127.0.0.1:8001" > > etcd_version:"3.2.18" > }
+I0401 23:20:46.496162   22069 controller.go:358] Loaded cluster spec from etcd: member_count:1 etcd_version:"3.2.18" 
+I0401 23:20:46.496198   22069 controller.go:237] spec member_count:1 etcd_version:"3.2.18" 
+I0401 23:20:46.496838   22069 backup.go:116] performing snapshot save to /tmp/914896312/snapshot.db.gz
+I0401 23:20:46.530641   22069 backup.go:141] backup complete: name:"2018-04-02T06:20:46Z-000001" 
+I0401 23:20:46.530857   22069 controller.go:315] took backup: name:"2018-04-02T06:20:46Z-000001" 
+I0401 23:20:46.530943   22069 vfs.go:95] listed backups in /tmp/etcd-manager/backups/test/backups: [2018-04-02T06:20:40Z-000000 2018-04-02T06:20:46Z-000001]
+I0401 23:20:46.530966   22069 controller.go:295] controller loop complete
+I0401 23:20:56.532182   22069 controller.go:96] starting controller iteration
+I0401 23:20:56.532219   22069 controller.go:106] peers: [peer{id:"DMkpvEkSD8FGcHYvCQUSWQ" addresses:"127.0.0.1:8000" }]
+I0401 23:20:56.535173   22069 controller.go:190] etcd cluster state: etcdClusterState
+  members:
+    {"name":"DMkpvEkSD8FGcHYvCQUSWQ","peerURLs":["http://127.0.0.1:2380"],"endpoints":["http://127.0.0.1:4001"],"ID":"8356769972604421428"}
+  peers:
+    etcdClusterPeerInfo{peer=peer{id:"DMkpvEkSD8FGcHYvCQUSWQ" addresses:"127.0.0.1:8000" }, info=cluster_name:"test" node_configuration:<name:"DMkpvEkSD8FGcHYvCQUSWQ" peer_urls:"http://127.0.0.1:2380" client_urls:"http://127.0.0.1:4001" quarantined_client_urls:"http://127.0.0.1:8001" > etcd_state:<cluster:<cluster_token:"KPO3m-ad2IhO3FH5NJ-Vvg" nodes:<name:"DMkpvEkSD8FGcHYvCQUSWQ" peer_urls:"http://127.0.0.1:2380" client_urls:"http://127.0.0.1:4001" quarantined_client_urls:"http://127.0.0.1:8001" > > etcd_version:"3.2.18" > }
+I0401 23:20:56.536290   22069 controller.go:358] Loaded cluster spec from etcd: member_count:1 etcd_version:"3.2.18" 
+I0401 23:20:56.536325   22069 controller.go:237] spec member_count:1 etcd_version:"3.2.18" 
+I0401 23:20:56.536346   22069 controller.go:295] controller loop complete
+^C2018-04-01 23:20:59.360184 N | pkg/osutil: received interrupt signal, shutting down...
+WARNING: 2018/04/01 23:20:59 grpc: addrConn.resetTransport failed to create client transport: connection error: desc = "transport: Error while dialing dial tcp 127.0.0.1:4001: getsockopt: connection refused"; Reconnecting to {127.0.0.1:4001 0  <nil>}
+2018-04-01 23:20:59.361386 I | etcdserver: skipped leadership transfer for single member cluster
+WARNING: 2018/04/01 23:20:59 grpc: addrConn.transportMonitor exits due to: context canceled
