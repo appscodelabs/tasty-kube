@@ -9,7 +9,7 @@ GITHUB_URL=https://github.com/coreos/etcd/releases/download
 DOWNLOAD_URL=${GOOGLE_URL}
 
 rm -f /opt/etcd-${ETCD_VER}-linux-amd64.tar.gz
-rm -rf /opt/etcd-download-test && mkdir -p /opt/etcd-download-test
+rm -rf /opt/etcd-${ETCD_VER}-linux-amd64 && mkdir -p /opt/etcd-${ETCD_VER}-linux-amd64
 
 curl -L ${DOWNLOAD_URL}/${ETCD_VER}/etcd-${ETCD_VER}-linux-amd64.tar.gz -o /opt/etcd-${ETCD_VER}-linux-amd64.tar.gz
 tar xzvf /opt/etcd-${ETCD_VER}-linux-amd64.tar.gz -C /opt/etcd-${ETCD_VER}-linux-amd64 --strip-components=1
