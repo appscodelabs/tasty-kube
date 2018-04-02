@@ -1,0 +1,48 @@
+monitoring.appscode.com/v1alpha1 - clusteralert
+monitoring.appscode.com/v1alpha1 - nodealert
+monitoring.appscode.com/v1alpha1 - podalert
+
+voyager.appscode.com/v1beta1 - certificate
+voyager.appscode.com/v1beta1 - ingress
+
+stash.appscode.com/v1alpha1 - recovery
+stash.appscode.com/v1alpha1 - restics
+
+monitoring.coreos.com/v1 - prom_prometheus
+monitoring.coreos.com/v1 - prom_servicemonitors
+
+batch/v1 - jobs
+batch/v1beta1 - cronjobs
+
+apps/v1 - replicasets
+apps/v1 - daemonset
+apps/v1 - deployment
+apps/v1 - statefulsets
+
+v1 - role
+v1 - role_binding
+v1 - namespaces
+v1 - nodes
+v1 - pods
+v1 - cluster_role
+v1 - cluster_role_binding
+v1 - configmap
+v1 - events
+v1 - secrets
+v1 - services
+v1 - pv
+v1 - pvc
+v1 - rcs
+
+kubedb.com/v1alpha1 - memcached
+kubedb.com/v1alpha1 - mongodb
+kubedb.com/v1alpha1 - mysql
+kubedb.com/v1alpha1 - postgres
+kubedb.com/v1alpha1 - redis
+kubedb.com/v1alpha1 - dormant_database
+kubedb.com/v1alpha1 - elasticsearch
+kubedb.com/v1alpha1 - snapshots
+
+extension/v1beta1 - ingress_extension
+
+storage.k8s.io/v1 - storageclasses
