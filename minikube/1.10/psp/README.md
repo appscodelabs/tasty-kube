@@ -23,18 +23,14 @@ $ kubectl apply -f cluster-roles.yaml
 clusterrole.rbac.authorization.k8s.io "psp:privileged" created
 clusterrole.rbac.authorization.k8s.io "psp:default" created
 
-$ ./role-bindings.sh
-+ kubectl create rolebinding psp:kube-dns --clusterrole=psp:privilged --serviceaccount=kube-system:kube-dns --namespace=kube-system
-rolebinding.rbac.authorization.k8s.io "psp:kube-dns" created
-+ kubectl create rolebinding psp:kube-proxy --clusterrole=psp:privilged --serviceaccount=kube-system:kube-proxy --namespace=kube-system
-rolebinding.rbac.authorization.k8s.io "psp:kube-proxy" created
-+ kubectl create rolebinding psp:default --clusterrole=psp:privilged --serviceaccount=kube-system:default --namespace=kube-system
-rolebinding.rbac.authorization.k8s.io "psp:default" created
-+ kubectl create rolebinding psp:storage-provisioner --clusterrole=psp:privilged --serviceaccount=kube-system:storage-provisioner --namespace=kube-system
-rolebinding.rbac.authorization.k8s.io "psp:storage-provisioner" created
+$ kubectl apply -f role-bindings.yaml
+rolebinding.rbac.authorization.k8s.io "minikube" created
 
 $ kubectl get pods -n kube-system
 NAME                                    READY     STATUS    RESTARTS   AGE
-kubernetes-dashboard-5498ccf677-5jxmq   1/1       Running   3          2m
-storage-provisioner                     0/1       Error     2          1m
+kube-dns-86f4d74b45-tgwrc               3/3       Running   0          3m
+kube-proxy-42lrc                        1/1       Running   0          3m
+kubernetes-dashboard-5498ccf677-mp25g   1/1       Running   0          3m
+storage-provisioner                     1/1       Running   3          4m
+
 ```
