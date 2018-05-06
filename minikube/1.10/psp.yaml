@@ -1,0 +1,64 @@
+apiVersion: v1
+items:
+- apiVersion: extensions/v1beta1
+  kind: PodSecurityPolicy
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"extensions/v1beta1","kind":"PodSecurityPolicy","metadata":{"annotations":{},"name":"default","namespace":""},"spec":{"fsGroup":{"rule":"RunAsAny"},"runAsUser":{"rule":"RunAsAny"},"seLinux":{"rule":"RunAsAny"},"supplementalGroups":{"rule":"RunAsAny"},"volumes":["*"]}}
+    creationTimestamp: 2018-03-23T15:13:33Z
+    name: default
+    namespace: ""
+    resourceVersion: "157"
+    selfLink: /apis/extensions/v1beta1/podsecuritypolicies/default
+    uid: c0ceded9-2eac-11e8-a7b3-005056b26431
+  spec:
+    allowPrivilegeEscalation: true
+    fsGroup:
+      rule: RunAsAny
+    runAsUser:
+      rule: RunAsAny
+    seLinux:
+      rule: RunAsAny
+    supplementalGroups:
+      rule: RunAsAny
+    volumes:
+    - '*'
+- apiVersion: extensions/v1beta1
+  kind: PodSecurityPolicy
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"extensions/v1beta1","kind":"PodSecurityPolicy","metadata":{"annotations":{},"name":"privileged","namespace":""},"spec":{"allowedCapabilities":["*"],"fsGroup":{"rule":"RunAsAny"},"hostIPC":true,"hostNetwork":true,"hostPID":true,"hostPorts":[{"max":65535,"min":1}],"privileged":true,"readOnlyRootFilesystem":false,"runAsUser":{"rule":"RunAsAny"},"seLinux":{"rule":"RunAsAny"},"supplementalGroups":{"rule":"RunAsAny"},"volumes":["*"]}}
+    creationTimestamp: 2018-03-23T15:13:33Z
+    name: privileged
+    namespace: ""
+    resourceVersion: "156"
+    selfLink: /apis/extensions/v1beta1/podsecuritypolicies/privileged
+    uid: c0cd0625-2eac-11e8-a7b3-005056b26431
+  spec:
+    allowPrivilegeEscalation: true
+    allowedCapabilities:
+    - '*'
+    fsGroup:
+      rule: RunAsAny
+    hostIPC: true
+    hostNetwork: true
+    hostPID: true
+    hostPorts:
+    - max: 65535
+      min: 1
+    privileged: true
+    runAsUser:
+      rule: RunAsAny
+    seLinux:
+      rule: RunAsAny
+    supplementalGroups:
+      rule: RunAsAny
+    volumes:
+    - '*'
+kind: List
+metadata:
+  resourceVersion: ""
+  selfLink: ""
+  
