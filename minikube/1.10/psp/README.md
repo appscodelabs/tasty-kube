@@ -1,3 +1,4 @@
+```console
 $ ./restart.sh
 + minikube delete
 Deleting local Kubernetes cluster...
@@ -31,3 +32,4 @@ rolebinding.rbac.authorization.k8s.io "psp:kube-proxy" created
 rolebinding.rbac.authorization.k8s.io "psp:default" created
 + kubectl create rolebinding psp:storage-provisioner --clusterrole=psp:privilged --serviceaccount=kube-system:storage-provisioner --namespace=kube-system
 rolebinding.rbac.authorization.k8s.io "psp:storage-provisioner" created
+```
