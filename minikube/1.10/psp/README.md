@@ -32,4 +32,9 @@ rolebinding.rbac.authorization.k8s.io "psp:kube-proxy" created
 rolebinding.rbac.authorization.k8s.io "psp:default" created
 + kubectl create rolebinding psp:storage-provisioner --clusterrole=psp:privilged --serviceaccount=kube-system:storage-provisioner --namespace=kube-system
 rolebinding.rbac.authorization.k8s.io "psp:storage-provisioner" created
+
+$ kubectl get pods -n kube-system
+NAME                                    READY     STATUS    RESTARTS   AGE
+kubernetes-dashboard-5498ccf677-5jxmq   1/1       Running   3          2m
+storage-provisioner                     0/1       Error     2          1m
 ```
