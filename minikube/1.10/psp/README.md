@@ -34,3 +34,7 @@ kubernetes-dashboard-5498ccf677-mp25g   1/1       Running   0          3m
 storage-provisioner                     1/1       Running   3          4m
 
 ```
+
+- https://github.com/tigera/tectonic-installer/commit/cbb466e8db57393ab0cedaac2ec0993dfcc5fb40
+- https://kubernetes.slack.com/archives/C2P1JHS2E/p1525922158000046
+- https://files.slack.com/files-pri/T09NY5SBT-F7RCJUKS6/ClusterRoleBindings.yaml
