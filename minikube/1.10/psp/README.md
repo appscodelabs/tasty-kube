@@ -19,11 +19,11 @@ $ kubectl apply -f psp.yaml
 podsecuritypolicy.extensions "default" created
 podsecuritypolicy.extensions "privileged" created
 
-$ kubectl apply -f cluster-roles.yaml
+$ kubectl auth reconcile -f cluster-roles.yaml
 clusterrole.rbac.authorization.k8s.io "psp:privileged" created
 clusterrole.rbac.authorization.k8s.io "psp:default" created
 
-$ kubectl apply -f role-bindings.yaml
+$ kubectl auth reconcile -f role-bindings.yaml
 rolebinding.rbac.authorization.k8s.io "minikube" created
 
 $ kubectl get pods -n kube-system
