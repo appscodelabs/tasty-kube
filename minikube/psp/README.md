@@ -17,19 +17,26 @@ $ ./restart.sh
 💗  kubectl is now configured to use "minikube"
 🏄  Done! Thank you for using minikube!
 
+$ kubectl create -f psp.yaml
+podsecuritypolicy.policy/default created
+podsecuritypolicy.policy/privileged created
+
+$ kubectl auth reconcile -f cluster-roles.yaml
+clusterrole.rbac.authorization.k8s.io/psp:privileged reconciled
+clusterrole.rbac.authorization.k8s.io/psp:default reconciled
+
+$ kubectl auth reconcile -f role-bindings.yaml
+rolebinding.rbac.authorization.k8s.io/minikube reconciled
+
 $ kubectl get pods -n kube-system
 NAME                               READY   STATUS    RESTARTS   AGE
-coredns-86c58d9df4-rktbt           1/1     Running   0          2m29s
-coredns-86c58d9df4-vpw8x           1/1     Running   0          2m29s
-etcd-minikube                      1/1     Running   0          84s
-kube-addon-manager-minikube        1/1     Running   0          84s
-kube-apiserver-minikube            1/1     Running   0          96s
-kube-controller-manager-minikube   1/1     Running   0          96s
-kube-proxy-mn2qm                   1/1     Running   0          2m29s
-kube-scheduler-minikube            1/1     Running   0          93s
-storage-provisioner                1/1     Running   0          2m24s
-
-$ kubectl create -f psp.yaml
-podsecuritypolicy.extensions "default" created
-podsecuritypolicy.extensions "privileged" created
+coredns-86c58d9df4-7f6k6           1/1     Running   0          91s
+coredns-86c58d9df4-wb9r7           1/1     Running   0          91s
+etcd-minikube                      1/1     Running   0          63s
+kube-addon-manager-minikube        1/1     Running   0          28s
+kube-apiserver-minikube            1/1     Running   0          99s
+kube-controller-manager-minikube   1/1     Running   0          70s
+kube-proxy-2pbzz                   1/1     Running   0          90s
+kube-scheduler-minikube            1/1     Running   0          103s
+storage-provisioner                1/1     Running   3          3m13s
 ```
