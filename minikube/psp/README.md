@@ -1,3 +1,5 @@
+# How to create a PSP-enabled Minikube cluster?
+
 ```console
 $ ./restart.sh
 + minikube delete
@@ -40,3 +42,8 @@ kube-proxy-2pbzz                   1/1     Running   0          90s
 kube-scheduler-minikube            1/1     Running   0          103s
 storage-provisioner                1/1     Running   3          3m13s
 ```
+
+## Additional Info
+- https://github.com/tigera/tectonic-installer/commit/cbb466e8db57393ab0cedaac2ec0993dfcc5fb40
+- https://kubernetes.slack.com/archives/C2P1JHS2E/p1525922158000046
+- https://files.slack.com/files-pri/T09NY5SBT-F7RCJUKS6/ClusterRoleBindings.yaml
