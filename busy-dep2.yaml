@@ -1,9 +1,9 @@
 apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
-  name: busy-dep
+  name: busy-dep2
   labels:
-    app: busy-dep
+    app: busy-dep2
 spec:
   replicas: 1
   template:
