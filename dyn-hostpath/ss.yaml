@@ -28,6 +28,32 @@ spec:
       labels:
         app: nginx
     spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: failure-domain.beta.kubernetes.io/zone
+                operator: In
+                values:
+                - us-east1-b
+                - us-east1-c
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 100
+            podAffinityTerm:
+              namespaces: ["default"]
+              labelSelector:
+                matchLabels:
+                  app: nginx
+              topologyKey: kubernetes.io/hostname
+          - weight: 50
+            podAffinityTerm:
+              namespaces: ["default"]
+              labelSelector:
+                matchLabels:
+                  app: nginx
+              topologyKey: failure-domain.beta.kubernetes.io/zone
       containers:
       - name: nginx
         image: k8s.gcr.io/nginx-slim:0.8
@@ -49,6 +75,7 @@ spec:
       name: www
     spec:
       accessModes: [ "ReadWriteOnce" ]
+      storageClassName: standard
       resources:
         requests:
-          storage: 50Mi
+          storage: 1Gi

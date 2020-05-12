@@ -13,3 +13,5 @@ spec:
     imagePullPolicy: IfNotPresent
     name: busybox
   restartPolicy: Always
+  nodeSelector:
+    failure-domain.beta.kubernetes.io/zone: us-east1-b
