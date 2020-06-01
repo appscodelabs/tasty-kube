@@ -3,5 +3,5 @@ set -xeou pipefail
 
 minikube delete || true
 minikube start \
-  --kubernetes-version=v1.13.3 \
-  --extra-config=apiserver.enable-admission-plugins="NamespaceLifecycle,LimitRanger,ServiceAccount,DefaultStorageClass,DefaultTolerationSeconds,PodSecurityPolicy,MutatingAdmissionWebhook,ValidatingAdmissionWebhook,Priority,ResourceQuota"
+  --kubernetes-version=v1.18.3 \
+  --extra-config=apiserver.enable-admission-plugins="NamespaceLifecycle,LimitRanger,ServiceAccount,TaintNodesByCondition,Priority,DefaultTolerationSeconds,DefaultStorageClass,StorageObjectInUseProtection,PersistentVolumeClaimResize,RuntimeClass,CertificateApproval,CertificateSigning,CertificateSubjectRestriction,DefaultIngressClass,MutatingAdmissionWebhook,ValidatingAdmissionWebhook,ResourceQuota,PodSecurityPolicy"
