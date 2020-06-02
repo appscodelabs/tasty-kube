@@ -41,3 +41,8 @@ local-path-storage   local-path-provisioner-bd4bb6b75-x4zmq       1/1     Runnin
 ```console
 kubectl apply -f https://github.com/appscodelabs/tasty-kube/raw/master/kind/pod.yaml
 ```
+
+## PSP enabled KIND cluster in GitHub Actions
+
+https://github.com/tamalsaha/psp-kind-actions-demo
+
