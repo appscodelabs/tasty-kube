@@ -1,5 +1,7 @@
 # How to create a PSP-enabled Minikube cluster?
 
+1. Create cluster: 
+
 ```console
 $ ./restart.sh
 + minikube delete
@@ -18,18 +20,19 @@ $ ./restart.sh
 🤔  Verifying component health .....
 💗  kubectl is now configured to use "minikube"
 🏄  Done! Thank you for using minikube!
+```
 
-$ kubectl create -f psp.yaml
-podsecuritypolicy.policy/default created
-podsecuritypolicy.policy/privileged created
+2. Now, open a new terminal and run:
 
-$ kubectl auth reconcile -f cluster-roles.yaml
-clusterrole.rbac.authorization.k8s.io/psp:privileged reconciled
-clusterrole.rbac.authorization.k8s.io/psp:default reconciled
+```
+./configure.sh
+```
 
-$ kubectl auth reconcile -f role-bindings.yaml
-rolebinding.rbac.authorization.k8s.io/minikube reconciled
+The PSP yamls are taken from https://kubernetes.io/docs/concepts/security/pod-security-standards/#policy-instantiation
 
+3. Now, wait several minutes, you can get a working k8s cluster.
+
+```console
 $ kubectl get pods -n kube-system
 NAME                               READY   STATUS    RESTARTS   AGE
 coredns-86c58d9df4-7f6k6           1/1     Running   0          91s
