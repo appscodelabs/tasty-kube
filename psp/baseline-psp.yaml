@@ -4,8 +4,8 @@ metadata:
   name: baseline
   annotations:
     # Optional: Allow the default AppArmor profile, requires setting the default.
-    apparmor.security.beta.kubernetes.io/allowedProfileNames: 'runtime/default'
-    apparmor.security.beta.kubernetes.io/defaultProfileName:  'runtime/default'
+    # apparmor.security.beta.kubernetes.io/allowedProfileNames: 'runtime/default'
+    # apparmor.security.beta.kubernetes.io/defaultProfileName:  'runtime/default'
     # Optional: Allow the default seccomp profile, requires setting the default.
     seccomp.security.alpha.kubernetes.io/allowedProfileNames: 'docker/default,runtime/default,unconfined'
     seccomp.security.alpha.kubernetes.io/defaultProfileName:  'unconfined'
