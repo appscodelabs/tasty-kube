@@ -3,7 +3,8 @@
 1. Create cluster
 
 ```console
-kind create cluster --config https://raw.githubusercontent.com/appscodelabs/tasty-kube/master/kind/psp/kind-psp.yaml
+curl -sL https://raw.githubusercontent.com/appscodelabs/tasty-kube/master/kind/psp/kind-psp.yaml > /tmp/kind-psp.yaml
+kind create cluster --config /tmp/kind-psp.yaml
 ```
 
 2. Create PSP and rbac.
