@@ -17,3 +17,14 @@ kubectl apply -f https://github.com/appscodelabs/tasty-kube/raw/master/psp/restr
 kubectl apply -f https://github.com/appscodelabs/tasty-kube/raw/master/kind/psp/cluster-roles.yaml
 kubectl apply -f https://github.com/appscodelabs/tasty-kube/raw/master/kind/psp/role-bindings.yaml
 ```
+
+3. Wait until all pods are RUNNING.
+
+```console
+```
+
+4. Create a test pod to check everything is working.
+
+```console
+kubectl apply -f https://github.com/appscodelabs/tasty-kube/raw/master/kind/pod.yaml
+```
