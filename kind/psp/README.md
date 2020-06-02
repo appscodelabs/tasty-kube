@@ -14,6 +14,6 @@ kubectl apply -f https://github.com/appscodelabs/tasty-kube/raw/master/psp/privi
 kubectl apply -f https://github.com/appscodelabs/tasty-kube/raw/master/psp/baseline-psp.yaml
 kubectl apply -f https://github.com/appscodelabs/tasty-kube/raw/master/psp/restricted-psp.yaml
 
-kubectl apply -f https://github.com/appscodelabs/tasty-kube/raw/master/minikube/psp/cluster-roles.yaml
-kubectl apply -f https://github.com/appscodelabs/tasty-kube/raw/master/minikube/psp/role-bindings.yaml
+kubectl apply -f https://github.com/appscodelabs/tasty-kube/blob/master/kind/psp/cluster-roles.yaml
+kubectl apply -f https://github.com/appscodelabs/tasty-kube/blob/master/kind/psp/role-bindings.yaml
 ```
