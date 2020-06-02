@@ -1,5 +1,7 @@
 # How to create a PSP-enabled Minikube cluster?
 
+Uses `virtualbox` driver.
+
 1. Create cluster: 
 
 ```console
