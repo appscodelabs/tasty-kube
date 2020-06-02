@@ -14,7 +14,5 @@ kubeadmConfigPatches:
 nodes:
 # the control plane node config
 - role: control-plane
-# the three workers
-- role: worker
-- role: worker
+# two workers
 - role: worker
