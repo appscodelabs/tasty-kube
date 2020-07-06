@@ -6,6 +6,9 @@ metadata:
     app: busy-dep
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: busy-dep
   template:
     metadata:
       labels:
