@@ -1,0 +1,14 @@
+apiVersion: cert-manager.io/v1alpha2
+kind: Certificate
+metadata:
+  name: mycert
+  namespace: demo
+spec:
+  secretName: mycert-tls
+  issuerRef:
+    name: mongo-ca-issuer
+  dnsNames:
+  - '*.example.com'
+  - example.com
+  - foo.com
+
