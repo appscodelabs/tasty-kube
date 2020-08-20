@@ -5,13 +5,13 @@ kind: ClusterConfig
 
 metadata:
   name: eks-demo
-  region: us-east-1
+  region: us-east-2
 
 nodeGroups:
   - name: ng-1
     instanceType: t3.medium
     desiredCapacity: 1
-    availabilityZones: ["us-east-1a", "us-east-1b", "us-east-1c", "us-east-1d", "us-east-1f"]
+    availabilityZones: ["us-east-2a"]
 
 cloudWatch:
     clusterLogging:
