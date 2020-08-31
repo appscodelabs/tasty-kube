@@ -13,5 +13,3 @@ spec:
     imagePullPolicy: IfNotPresent
     name: busybox
   restartPolicy: Always
-  nodeSelector:
-    kubernetes.io/hostname: x3
