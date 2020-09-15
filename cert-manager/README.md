@@ -6,6 +6,10 @@
 openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout ./ca.key -out ./ca.crt -subj "/CN=mongo/O=kubedb"
 ```
 
+```bash
+kubectl create ns demo
+```
+
 - Now create a ca-secret using the certificate files you have just generated.
 
 ```bash
@@ -18,7 +22,7 @@ kubectl create secret tls mongo-ca \
 Now, create an `Issuer` using the `ca-secret` you have just created. The `YAML` file looks like this:
 
 ```yaml
-apiVersion: cert-manager.io/v1alpha2
+apiVersion: cert-manager.io/v1
 kind: Issuer
 metadata:
   name: mongo-ca-issuer
@@ -26,6 +30,12 @@ metadata:
 spec:
   ca:
     secretName: mongo-ca
+```
+
+```bash
+kubectl create -f issuer.yaml
+
+kubectl create -f cert.yaml
 ```
 
 ```bash
