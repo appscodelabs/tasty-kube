@@ -9,6 +9,8 @@ spec:
   ports:
   - port: 80
     name: web
+  - port: 443
+    name: https
   # for headless service
   clusterIP: None
   # selector needed to create pods dns name
