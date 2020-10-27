@@ -5,11 +5,13 @@ metadata:
   labels:
     app: nginx
 spec:
-  # port not needed
-  # ports:
-  # - port: 80
-  #   name: web
+  # port needed to create SRV records, SRV records have pod DNS name
+  ports:
+  - port: 80
+    name: web
+  # for headless service
   clusterIP: None
+  # selector needed to create pods dns name
   selector:
     app: nginx
 ---
