@@ -36,6 +36,10 @@ spec:
       containers:
       - name: nginx
         image: k8s.gcr.io/nginx-slim:0.8
+        lifecycle:
+          postStart:
+            exec:
+              command: ["/bin/sh", "-c", "echo Hello from the postStart handler > /usr/share/message; sleep 120"]
         ports:
         - containerPort: 80
           name: web
