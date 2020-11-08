@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: volume-test
+  namespace: default
+spec:
+  containers:
+  - image: busybox
+    command:
+      - /bin/sh
+      - -c
+      - "date >> /data/file.txt; sleep 5; xyz"
+    imagePullPolicy: IfNotPresent
+    name: busybox
+    volumeMounts:
+    - name: scripts
+      mountPath: /data
+  volumes:
+  - emptyDir: {}
+    name: scripts
