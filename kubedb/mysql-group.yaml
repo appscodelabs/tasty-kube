@@ -20,4 +20,9 @@ spec:
       requests:
         storage: 1Gi
   terminationPolicy: WipeOut
-
+  podTemplate:
+    spec:
+      resources:
+        limits:
+          cpu: 500m
+          memory: 1024Mi
