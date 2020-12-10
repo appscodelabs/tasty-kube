@@ -1,0 +1,58 @@
+apiVersion: kubedb.com/v1alpha2
+kind: MySQL
+metadata:
+  name: my-group
+  namespace: demo
+spec:
+  authSecret:
+    name: my-group-auth
+  podTemplate:
+    controller: {}
+    metadata: {}
+    spec:
+      livenessProbe:
+        exec:
+          command:
+          - bash
+          - -c
+          - |2
+
+            export MYSQL_PWD=${MYSQL_ROOT_PASSWORD}
+            mysql -h localhost -nsLNE -e "select member_state from performance_schema.replication_group_members where member_id=@@server_uuid;" 2>/dev/null | grep "ONLINE"
+        initialDelaySeconds: 60
+        periodSeconds: 10
+      readinessProbe:
+        exec:
+          command:
+          - bash
+          - -c
+          - |2
+
+            export MYSQL_PWD=${MYSQL_ROOT_PASSWORD}
+            mysql -h localhost -nsLNE -e "select member_state from performance_schema.replication_group_members where member_id=@@server_uuid;" 2>/dev/null | grep "ONLINE"
+        initialDelaySeconds: 60
+        periodSeconds: 10
+      resources:
+        limits:
+          cpu: 500m
+          memory: 1Gi
+        requests:
+          cpu: 500m
+          memory: 1Gi
+      serviceAccountName: my-group
+  replicas: 3
+  storage:
+    accessModes:
+    - ReadWriteOnce
+    resources:
+      requests:
+        storage: 1Gi
+    storageClassName: do-block-storage
+  storageType: Durable
+  terminationPolicy: WipeOut
+  topology:
+    group:
+      baseServerID: 100
+      name: dc002fc3-c412-4d18-b1d4-66c1fbfbbc9b
+    mode: GroupReplication
+  version: 8.0.21
