@@ -17,3 +17,8 @@ helm install metrics-server stable/metrics-server -n kube-system \
 ```
 
 ref: https://github.com/kubernetes-sigs/kind/issues/398#issuecomment-699529874
+
+## Allocatable Resource
+
+- https://kubernetes.io/docs/tasks/administer-cluster/reserve-compute-resources/
+- https://learnk8s.io/allocatable-resources
