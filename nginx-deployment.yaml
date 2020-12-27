@@ -4,6 +4,9 @@ metadata:
   name: nginx
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: nginx
   template:
     metadata:
       name: nginx
@@ -19,4 +22,4 @@ spec:
         - containerPort: 80
         resources:
           limits:
-            cpu: '10m'
+            cpu: '100m'
