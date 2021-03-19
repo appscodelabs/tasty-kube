@@ -28,5 +28,5 @@ ref: https://github.com/kubernetes-sigs/kind/issues/398#issuecomment-699529874
 - https://kops.sigs.k8s.io/node_resource_handling/
 
 
-## New Home for metrics-server
+## New Home for metrics-server Helm chart
 https://github.com/kubernetes-sigs/metrics-server/pull/670
