@@ -3,6 +3,9 @@
 ## Install in KIND
 
 ```
+helm repo add stable https://charts.helm.sh/stable
+helm repo update
+
 helm install metrics-server stable/metrics-server -n kube-system --set=args={--kubelet-insecure-tls}
 
 kubectl top
