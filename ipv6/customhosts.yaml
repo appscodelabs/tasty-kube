@@ -1,0 +1,21 @@
+apiVersion: v1
+data:
+  hosts: "# configmap mounted file\n127.0.0.1\tlocalhost\n::1\tlocalhost ip6-localhost
+    ip6-loopback\nfe00::0\tip6-localnet\nfe00::0\tip6-mcastprefix\nfe00::1\tip6-allnodes\nfe00::2\tip6-allrouters\nfd00:10:244::5\tbusybox"
+kind: ConfigMap
+metadata:
+  creationTimestamp: "2021-04-06T01:22:01Z"
+  managedFields:
+  - apiVersion: v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:data:
+        .: {}
+        f:hosts: {}
+    manager: kubectl-create
+    operation: Update
+    time: "2021-04-06T01:22:01Z"
+  name: customhosts
+  namespace: default
+  resourceVersion: "1859"
+  uid: 314e63b6-3077-4bbf-9e35-113b230677b0

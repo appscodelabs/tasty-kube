@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: busybox
+  labels:
+    app: busybox
+spec:
+  containers:
+  - image: ubuntu:20.04
+    command:
+      - sleep
+      - "3600"
+    imagePullPolicy: IfNotPresent
+    name: busybox
+    resources:
+      limits:
+        cpu: 500m
+        memory: 1Gi
+    volumeMounts:
+    - name: config-volume
+      mountPath: /etc
+  volumes:
+  - name: config-volume
+    configMap:
+      name: customhosts
+      items:
+      - key: hosts
+        path: hosts
+  restartPolicy: Always
