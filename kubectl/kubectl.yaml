@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: kubectl
+  labels:
+    app: kubectl
+  namespace: kube-system
+spec:
+  serviceAccountName: stash-stash-enterprise
+  containers:
+  - image: appscode/kubectl:1.16
+    command:
+      - sleep
+      - "3600"
+    imagePullPolicy: IfNotPresent
+    name: kubectl
+    resources:
+      limits:
+        cpu: 500m
+        memory: 1Gi
+  restartPolicy: Always
