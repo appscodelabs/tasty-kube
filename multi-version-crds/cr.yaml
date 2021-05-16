@@ -1,0 +1,7 @@
+apiVersion: example.com/v1beta1
+kind: CronTab
+metadata:
+  name: mycron
+spec:
+  host: company.com
+  port: "8080"
