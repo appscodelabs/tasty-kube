@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: pull-image
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      name: pull-image
+  template:
+    metadata:
+      labels:
+        name: pull-image
+    spec:
+      tolerations:
+      # this toleration is to have the daemonset runnable on master nodes
+      # remove it if your masters can't run pods
+      - key: node-role.kubernetes.io/master
+        operator: Exists
+        effect: NoSchedule
+      containers:
+      - name: image
+        image: ubuntu:18.04
+        command: ["true"]
