@@ -23,5 +23,6 @@ spec:
       - name: image
         image: ubuntu:18.04
         imagePullPolicy: Always
+        command: ["sleep", "3600"]
         # command: [ "echo", "SUCCESS" ]
-        command: ["true"]
+        # command: ["true"]
