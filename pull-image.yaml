@@ -12,7 +12,6 @@ spec:
       labels:
         name: pull-image
     spec:
-      restartPolicy: Always
       tolerations:
       # this toleration is to have the daemonset runnable on master nodes
       # remove it if your masters can't run pods
@@ -21,6 +20,7 @@ spec:
         effect: NoSchedule
       containers:
       - name: image
+        # change the image to match the image you want to pull
         image: ubuntu:18.04
         imagePullPolicy: Always
         command: ["sleep", "3600"]
