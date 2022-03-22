@@ -10,7 +10,7 @@ metadata:
 nodeGroups:
   - name: ng-1
     instanceType: t3.medium
-    desiredCapacity: 1
+    desiredCapacity: 3
     availabilityZones: ["us-east-2a"]
 
 cloudWatch:
