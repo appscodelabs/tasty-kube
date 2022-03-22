@@ -12,8 +12,4 @@ spec:
       - "3600"
     imagePullPolicy: IfNotPresent
     name: busybox
-    resources:
-      limits:
-        cpu: 500m
-        memory: 1Gi
   restartPolicy: Always
