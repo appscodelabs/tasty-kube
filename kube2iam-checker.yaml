@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: kube2iam-checker
+  labels:
+    app: kube2iam-checker
+spec:
+  containers:
+  - image: amazon/aws-cli
+    command:
+      - bash
+      - -c
+      - "s3 ls;sleep 3600"
+    imagePullPolicy: IfNotPresent
+    name: aws-cli
+  restartPolicy: Always
