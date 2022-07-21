@@ -16,3 +16,7 @@ spec:
       requests:
         storage: 1Gi
   terminationPolicy: Delete
+
+# curl -XGET -k -u "$ELASTIC_USER:$ELASTIC_PASSWORD" "https://localhost:9200/_cluster/health?pretty"
+
+# k exec -it es-quickstart-0 -c elasticsearch -- bash -c 'curl -XGET -k -u "$ELASTIC_USER:$ELASTIC_PASSWORD" "https://localhost:9200/_cluster/health?pretty"'
