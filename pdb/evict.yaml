@@ -1,5 +1,5 @@
-apiVersion: policy/v1
+apiVersion: policy/v1beta1
 kind: Eviction
 metadata:
-  name: nginx
+  name: nginx-6b5cd9cc4c-hq986
   namespace: default
