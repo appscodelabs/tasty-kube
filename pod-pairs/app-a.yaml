@@ -42,8 +42,9 @@ spec:
               - --namespace=default
               - --replicas=0
         command:
-          - sleep
-          - "3600"
+          - tail
+          - -f
+          - /etc/hostname
 ---
 apiVersion: v1
 kind: ServiceAccount
