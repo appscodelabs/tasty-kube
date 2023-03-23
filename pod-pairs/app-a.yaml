@@ -1,0 +1,80 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-a
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: app-a
+  template:
+    metadata:
+      labels:
+        app: app-a
+    spec:
+      serviceAccountName: app-a
+      containers:
+      - name: busybox
+        image: busybox
+        command:
+          - sleep
+          - "3600"
+        imagePullPolicy: IfNotPresent
+      - name: kubectl
+        image: ghcr.io/appscode/kubectl:1.24
+        imagePullPolicy: IfNotPresent
+        lifecycle:
+          postStart:
+            exec:
+              command:
+              - /usr/bin/kubectl
+              - scale
+              - deploy/app-b
+              - --namespace=default
+              - --replicas=1
+          preStop:
+            exec:
+              command:
+              - /usr/bin/kubectl
+              - scale
+              - deploy/app-b
+              - --namespace=default
+              - --replicas=0
+        command:
+          - sleep
+          - "3600"
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: app-a
+  namespace: default
+automountServiceAccountToken: true
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: default
+  name: app-a
+rules:
+- apiGroups: ["apps"]
+  resources: ["deployments"]
+  verbs: ["get"]
+- apiGroups: ["apps"]
+  resources: ["deployments/scale"]
+  verbs: ["patch"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: app-a
+  namespace: default
+subjects:
+- kind: ServiceAccount
+  name: app-a
+  namespace: default
+roleRef:
+  kind: Role
+  name: app-a
+  apiGroup: rbac.authorization.k8s.io
