@@ -1,0 +1,13 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: appscode:system:profiler
+  ownerReferences:
+  - apiVersion: v1
+    kind: Pod
+    name: busybox
+    uid: b43c647c-04fe-4f90-8b80-7f79a85f5d58
+    controller: true
+rules:
+- nonResourceURLs: ["/debug/pprof/", "/debug/pprof/*"]
+  verbs: ["get", "post"]
