@@ -16,6 +16,7 @@ spec:
   interval: 60m
   releaseName: kube-prometheus-stack
   targetNamespace: monitoring
+  storageNamespace: monitoring
   install:
     createNamespace: true
   chart:
