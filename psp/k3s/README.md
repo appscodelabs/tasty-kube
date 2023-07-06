@@ -1,5 +1,7 @@
 # PSP in k3s.io
 
+- https://github.com/k3s-io/k3s/issues/516#issuecomment-564861694
+
 ```yaml
 apiVersion: policy/v1beta1
 kind: PodSecurityPolicy
