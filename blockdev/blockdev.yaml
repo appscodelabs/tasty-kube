@@ -1,0 +1,39 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: block
+spec:
+  accessModes:
+    - ReadWriteOnce
+  volumeMode: Block
+  storageClassName: "linode-block-storage"
+  resources:
+    requests:
+      storage: 1Gi
+
+# mkfs.ext4 /dev/block && mkdir /data & mount /dev/block /data
+# ls -l /dev | grep block
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: abc
+  namespace: default
+spec:
+  containers:
+  - command:
+    - sleep
+    - "3600"
+    image: alpine:latest
+    imagePullPolicy: IfNotPresent
+    name: preparer
+    securityContext:
+      privileged: true
+    volumeDevices:
+    - devicePath: /dev/newblock
+      name: blockpvc
+  securityContext: {}
+  volumes:
+  - name: blockpvc
+    persistentVolumeClaim:
+      claimName: block
