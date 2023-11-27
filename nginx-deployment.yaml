@@ -16,6 +16,12 @@ spec:
         app: nginx
     spec:
       containers:
+      - image: curlimages/curl:8.4.0
+        command:
+          - sleep
+          - "3600"
+        imagePullPolicy: IfNotPresent
+        name: busybox
       - name: nginx
         image: nginx
         ports:
@@ -23,3 +29,4 @@ spec:
         resources:
           limits:
             cpu: '100m'
+---

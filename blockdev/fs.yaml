@@ -5,7 +5,7 @@ metadata:
 spec:
   accessModes:
     - ReadWriteOnce
-  volumeMode: Block
+  # volumeMode: Block
   storageClassName: "standard-rwo"
   resources:
     requests:
@@ -29,8 +29,8 @@ spec:
     name: preparer
     securityContext:
       privileged: true
-    volumeDevices:
-    - devicePath: /dev/newblock
+    volumeMounts:
+    - mountPath: /dev/newblock
       name: blockpvc
   securityContext: {}
   volumes:
