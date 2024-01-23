@@ -5,15 +5,10 @@ metadata:
   labels:
     app: nginx
 spec:
-  # port needed to create SRV records, SRV records have pod DNS name
   ports:
   - port: 80
     name: web
-  # - port: 9443
-  #   name: https
-  # for headless service
   clusterIP: None
-  # selector needed to create pods dns name
   selector:
     app: nginx
 ---
@@ -22,20 +17,19 @@ kind: StatefulSet
 metadata:
   name: web
 spec:
+  serviceName: "nginx"
+  replicas: 3
   selector:
     matchLabels:
-      app: nginx # has to match .spec.template.metadata.labels
-  serviceName: "nginx"
-  replicas: 3 # by default is 1
+      app: nginx
   template:
     metadata:
       labels:
-        app: nginx # has to match .spec.selector.matchLabels
+        app: nginx
     spec:
-      terminationGracePeriodSeconds: 10
       containers:
       - name: nginx
-        image: k8s.gcr.io/nginx-slim:0.8
+        image: registry.k8s.io/nginx-slim:0.8
         ports:
         - containerPort: 80
           name: web
@@ -47,7 +41,6 @@ spec:
       name: www
     spec:
       accessModes: [ "ReadWriteOnce" ]
-      storageClassName: "standard"
       resources:
         requests:
           storage: 1Gi

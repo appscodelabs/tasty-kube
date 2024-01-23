@@ -1,0 +1,17 @@
+apiVersion: kubedb.com/v1alpha2
+kind: Postgres
+metadata:
+  name: ha-postgres
+  namespace: default
+spec:
+  version: "13.2"
+  replicas: 3
+  storageType: Durable
+  storage:
+    storageClassName: "standard"
+    accessModes:
+    - ReadWriteOnce
+    resources:
+      requests:
+        storage: 1Gi
+
