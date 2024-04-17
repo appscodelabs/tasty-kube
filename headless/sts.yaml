@@ -26,7 +26,7 @@ spec:
     matchLabels:
       app: nginx # has to match .spec.template.metadata.labels
   serviceName: "nginx"
-  replicas: 3 # by default is 1
+  replicas: 1 # by default is 1
   template:
     metadata:
       labels:
@@ -35,7 +35,7 @@ spec:
       terminationGracePeriodSeconds: 10
       containers:
       - name: nginx
-        image: k8s.gcr.io/nginx-slim:0.8
+        image: k8s.gcr.io/nginx-slim:0.27
         ports:
         - containerPort: 80
           name: web
