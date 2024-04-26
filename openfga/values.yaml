@@ -1,0 +1,21 @@
+datastore:
+  engine: postgres
+  uri: postgres://postgres:password@openfga-postgresql.default.svc.cluster.local:5432/postgres?sslmode=disable&dbname=openfga
+postgresql:
+  auth:
+    database: openfga
+    postgresPassword: password
+  enabled: true
+image:
+  repository: ghcr.io/appscode/openfga
+initContainer:
+  repository: ghcr.io/appscode/k8s-wait-for
+securityContext: # +doc-gen:break
+  allowPrivilegeEscalation: false
+  capabilities:
+    drop: ["ALL"]
+  readOnlyRootFilesystem: true
+  runAsNonRoot: true
+  runAsUser: 65534
+  seccompProfile:
+    type: RuntimeDefault
