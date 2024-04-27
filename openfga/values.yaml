@@ -19,3 +19,6 @@ securityContext: # +doc-gen:break
   runAsUser: 65534
   seccompProfile:
     type: RuntimeDefault
+migrate:
+  annotations:
+    helm.sh/hook: "post-install, post-upgrade, post-rollback, post-delete"

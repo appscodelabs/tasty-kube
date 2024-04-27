@@ -1,0 +1,54 @@
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: HelmRepository
+metadata:
+  name: openfga
+  namespace: flux-system
+spec:
+  interval: 30m
+  url: https://openfga.github.io/helm-charts
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: openfga
+  namespace: default
+spec:
+  interval: 60m
+  releaseName: openfga
+  targetNamespace: default
+  storageNamespace: default
+  install:
+    createNamespace: true
+  chart:
+    spec:
+      chart: openfga
+      # version: "^5.x"
+      sourceRef:
+        kind: HelmRepository
+        name: openfga
+        namespace: flux-system
+  values:
+    datastore:
+      engine: postgres
+      uri: postgres://postgres:password@openfga-postgresql.default.svc.cluster.local:5432/postgres?sslmode=disable&dbname=openfga
+    postgresql:
+      auth:
+        database: openfga
+        postgresPassword: password
+      enabled: true
+    image:
+      repository: ghcr.io/appscode/openfga
+    initContainer:
+      repository: ghcr.io/appscode/k8s-wait-for
+    securityContext: # +doc-gen:break
+      allowPrivilegeEscalation: false
+      capabilities:
+        drop: ["ALL"]
+      readOnlyRootFilesystem: true
+      runAsNonRoot: true
+      runAsUser: 65534
+      seccompProfile:
+        type: RuntimeDefault
+    # migrate:
+    #   annotations:
+    #     helm.sh/hook: "post-install, post-upgrade, post-rollback, post-delete"
