@@ -19,6 +19,10 @@ spec:
   storageNamespace: default
   install:
     createNamespace: true
+  # https://github.com/fluxcd/flux2/discussions/1085#discussioncomment-473271
+  #   disableWait: true
+  # upgrade:
+  #   disableWait: true
   chart:
     spec:
       chart: openfga
@@ -49,6 +53,6 @@ spec:
       runAsUser: 65534
       seccompProfile:
         type: RuntimeDefault
-    # migrate:
-    #   annotations:
-    #     helm.sh/hook: "post-install, post-upgrade, post-rollback, post-delete"
+    migrate:
+      annotations:
+        helm.sh/hook: null
