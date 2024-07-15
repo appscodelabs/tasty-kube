@@ -5,7 +5,12 @@ metadata:
   namespace: kube-system
 data:
   aceinternal.override: |
-    file /etc/coredns/custom/db.aceinternal.server ace.internal
-  db.aceinternal.server: |
-    ;; A Records
-    ace.internal. 1 IN  A 139.144.198.96
+    file /etc/coredns/custom/db.ace.internal ace.internal
+  db.ace.internal: |
+    $ORIGIN ace.internal.
+    @ 3600 IN SOA sns.dns.icann.org. noc.dns.icann.org. 2017042745 7200 3600 1209600 3600
+      3600 IN NS a.iana-servers.net.
+      3600 IN NS b.iana-servers.net.
+           IN A 139.144.198.96
+
+    www     IN A     139.144.198.96
