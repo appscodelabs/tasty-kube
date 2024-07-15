@@ -4,11 +4,11 @@ metadata:
   name: coredns-custom
   namespace: kube-system
 data:
-  example.server: |
-    example.org {
-      log
-      whoami
-    }
+  # example.server: |
+  #   example.org {
+  #     log
+  #     whoami
+  #   }
   ace.internal.server: |
     ;; A Records
     ace.internal. 1 IN  A 139.144.198.96
