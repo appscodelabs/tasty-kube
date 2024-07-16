@@ -5,7 +5,7 @@
 - https://github.com/k3s-io/k3s/pull/4397
 
 ```
- envsubst < custom-dns.yaml  | kubectl apply -f -
+envsubst < custom-dns.yaml  | kubectl apply -f -
 
 kubectl run -it --rm --restart=Never --image=infoblox/dnstools:latest dnstools
 
