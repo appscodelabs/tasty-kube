@@ -6,6 +6,7 @@
 
 ```
 envsubst < custom-dns.yaml  | kubectl apply -f -
+kubectl delete pods -n kube-system -l k8s-app=kube-dns
 
 kubectl run -it --rm --restart=Never --image=infoblox/dnstools:latest dnstools
 
