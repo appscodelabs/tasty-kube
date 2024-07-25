@@ -1,0 +1,73 @@
+clusterName: lke204009
+opentelemetry-operator:
+  enabled: true
+collectors:
+  args:
+    # We need this for now until 0.105.0 is out with this fix:
+    # https://github.com/open-telemetry/opentelemetry-collector/commit/637b1f42fcb7cbb7ef8a50dcf41d0a089623a8b7
+    feature-gates: -confmap.unifyEnvVarExpansion
+  daemon:
+    suffix: agent
+    presets:
+      logsCollection:
+        enabled: true
+        includeCollectorLogs: false
+      kubeletMetrics:
+        enabled: false
+      hostMetrics:
+        enabled: false
+      kubernetesAttributes:
+        enabled: false
+    config:
+      exporters:
+        otlp:
+          endpoint: opentelemetry-kube-stack-gateway-collector:4317
+          tls:
+            insecure: true
+      service:
+        pipelines:
+          metrics: null
+          traces: null
+          logs:
+            exporters: [debug, otlp]
+  cluster:
+    image:
+      repository: otel/opentelemetry-collector-contrib
+    suffix: gateway
+    presets:
+      clusterMetrics:
+        enabled: false
+    config:
+      receivers:
+        otlp:
+          protocols:
+            grpc:
+              endpoint: 0.0.0.0:4317
+            http:
+              endpoint: 0.0.0.0:4318
+      exporters:
+        clickhouse:
+          endpoint: "tcp://admin:changeit@clickhouse-clickhouse:9000"
+          database: "otel"
+          ttl: 0
+          logs_table_name: otel_logs
+          timeout: 10s
+          sending_queue:
+            queue_size: 100
+          retry_on_failure:
+            enabled: true
+            initial_interval: 5s
+            max_interval: 30s
+            max_elapsed_time: 300s
+      service:
+        pipelines:
+          metrics: null
+          traces: null
+          logs:
+            receivers: [otlp,k8sobjects]
+            exporters: [clickhouse]
+
+instrumentation:
+  enabled: false
+opAMPBridge:
+  enabled: false
