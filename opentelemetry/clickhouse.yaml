@@ -1,0 +1,58 @@
+apiVersion: "clickhouse.altinity.com/v1"
+kind: "ClickHouseInstallation"
+metadata:
+  name: clickhouse
+  namespace: monitoring
+spec:
+  configuration:
+    clusters:
+      - name: "cluster"
+        layout:
+          shardsCount: 1
+          replicasCount: 1
+        templates:
+          podTemplate: clickhouse-stable
+          dataVolumeClaimTemplate: clickhouse-data-volume
+          serviceTemplate: svc-template
+    zookeeper:
+      nodes:
+        - host: zookeeper-headless
+          port: 2181
+    users:
+      admin/password_sha256_hex: 00810cf8b94d6fcb9c5de484d3bec4187620b3e2876e59aab90d852fe0f18fb6
+      admin/profile: default
+      admin/quota: default
+      admin/networks/ip:
+        - 0.0.0.0/0
+        - ::/0
+    files:
+      config.d/log_rotation.xml: |-
+        <clickhouse>
+            <logger>
+                <level>information</level>
+                <log>/var/log/clickhouse-server/clickhouse-server.log</log>
+                <errorlog>/var/log/clickhouse-server/clickhouse-server.err.log</errorlog>
+                <size>100M</size>
+                <count>5</count>
+                <console>1</console>
+            </logger>
+        </clickhouse>
+  templates:
+    podTemplates:
+      - name: clickhouse-stable
+        spec:
+          containers:
+            - name: clickhouse
+              image: clickhouse/clickhouse-server:24.1.2-alpine
+              resources:
+                requests:
+                  memory: "1024Mi"
+                  cpu: "500m"
+    volumeClaimTemplates:
+      - name: clickhouse-data-volume
+        spec:
+          accessModes:
+            - ReadWriteOnce
+          resources:
+            requests:
+              storage: 20Gi
