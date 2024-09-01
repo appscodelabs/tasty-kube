@@ -5,7 +5,7 @@
 - https://github.com/k3s-io/k3s/pull/4397
 
 ```
-envsubst < custom-dns.yaml  | kubectl apply -f -
+envsubst < custom-zone.yaml  | kubectl apply -f -
 kubectl delete pods -n kube-system -l k8s-app=kube-dns
 ```
 
