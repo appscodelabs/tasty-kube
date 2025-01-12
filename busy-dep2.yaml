@@ -18,7 +18,7 @@ spec:
           - "3600"
         imagePullPolicy: IfNotPresent
         name: busybox
-      - image: ubuntu:18.04
+      - image: ubuntu:24.04
         command:
           - sleep
           - "3600"
