@@ -1,0 +1,41 @@
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: HelmRepository
+metadata:
+  name: appscode-charts-oci
+  namespace: default
+spec:
+  interval: 30m
+  provider: generic
+  timeout: 1m
+  type: oci
+  url: oci://ghcr.io/appscode-charts
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: cert-manager
+  namespace: default
+spec:
+  chart:
+    spec:
+      chart: cert-manager
+      reconcileStrategy: ChartVersion
+      sourceRef:
+        kind: HelmRepository
+        name: appscode-charts-oci
+        namespace: default
+      version: v1.17.1
+  install:
+    crds: CreateReplace
+    createNamespace: true
+    remediation:
+      retries: -1
+  interval: 5m
+  releaseName: cert-manager
+  storageNamespace: cert-manager
+  targetNamespace: cert-manager
+  timeout: 30m
+  upgrade:
+    crds: CreateReplace
+    remediation:
+      retries: -1
