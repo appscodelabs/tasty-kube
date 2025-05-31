@@ -12,3 +12,16 @@ kubectl get pods --all-namespaces -o=custom-columns=NAME:.metadata.name,NAMESPAC
 
 ### FAQ
 - `failed to create sandbox` means that the kubelet can't bring up the pause container or CNI started causing IP to change.
+
+### Docker Hub login for KIND
+
+```
+docker login
+
+for node_name in $(docker ps | awk 'NR>1 {print $NF}'); do
+  # copy the config to where kubelet will look
+  docker cp "$HOME/.docker/config.json" "${node_name}:/var/lib/kubelet/config.json"
+  # restart kubelet to pick up the config
+  docker exec "${node_name}" systemctl restart kubelet.service
+done
+```
