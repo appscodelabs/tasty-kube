@@ -25,3 +25,10 @@ for node_name in $(docker ps | awk 'NR>1 {print $NF}'); do
   docker exec "${node_name}" systemctl restart kubelet.service
 done
 ```
+
+### Delete job pods
+
+```
+kubectl delete pod --field-selector=status.phase==Succeeded -A
+kubectl delete pod --field-selector=status.phase==Failed -A
+```
